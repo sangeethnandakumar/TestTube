@@ -86,11 +86,17 @@ a) Add optional resource image if you want it
         simpleItems.add(new SimpleItem("Lilly Flower",R.drawable.lilly));
         simpleItems.add(new SimpleItem("Rose Flower",R.drawable.rose));
 ```
-a) Add optional web image if you want it
+b) Add optional web image if you want it
 ```java
         simpleItems.add(new SimpleItem("Google","https://www.google.com/something.png"));
         simpleItems.add(new SimpleItem("Facebook","https://www.facebook.com/something.png"));
         simpleItems.add(new SimpleItem("YouTube","https://www.youtube.com/something.png"));   
+```
+c) Feel free to mix all these
+```java
+        simpleItems.add(new SimpleItem("Simply text"));
+        simpleItems.add(new SimpleItem("Resource image",R.drawable.elephant));
+        simpleItems.add(new SimpleItem("Web image","https://www.google.com/something.png"));
 ```
 3. Create a SimpleAdapter
 ```java
