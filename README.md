@@ -1,6 +1,10 @@
 # Introducing TestTube
 The TestTube library project for easy Android implimentations
+
 [![](https://jitpack.io/v/sangeethnandakumar/TestTube.svg)](https://jitpack.io/#sangeethnandakumar/TestTube)
+[![Travis branch](https://img.shields.io/badge/devolopment-android%20studio-brightgreen.svg)]()
+[![Travis branch](https://img.shields.io/badge/package-bullyfox.sangeeth.testube-blue.svg)]()
+[![Travis branch](https://img.shields.io/badge/year-2017-red.svg)]()
 
 ## GET A WEBPAGE (network)
 1. Create a WebServer instance
