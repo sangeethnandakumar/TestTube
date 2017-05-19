@@ -111,11 +111,14 @@ Like Simple Standard listview before, Use a standard dual list view
 1. Previous statements are same except here
 ```java
         List<DualItem> dualItems=new ArrayList<>();
+	
         dualItems.add(new DualItem("Samsung","User in Korea"));
         dualItems.add(new DualItem("Pixel","User in California"));
         dualItems.add(new DualItem("Sony Xperia","User in Japan"));
+	
         DualAdapter dualAdapter=new DualAdapter(getApplicationContext(),dualItems,AdapterType.LISTVIEW);
-	list.setAdapter(simpleAdapter);
+	
+	list.setAdapter(dualAdapter);
 ```
 NOTE : Images from resources and web are also compatable here
 
@@ -124,10 +127,14 @@ Like Dual Standard listview before, Use a standard triple list view
 1. Statements are changed like
 ```java
         List<TripleItem> tripleItems=new ArrayList<>();
+	
         tripleItems.add(new TripleItem("Billy","Cat","At Kerala"));
         tripleItems.add(new TripleItem("Snoory","Cat","At Banglore"));
         tripleItems.add(new TripleItem("Dingi","Dog","At Mumbai"));
         tripleItems.add(new TripleItem("Pupy","Dog","At Jammu"));
+	
         TripleAdapter tripleAdapter=new TripleAdapter(getApplicationContext(),tripleItems,AdapterType.LISTVIEW);
+	
+	list.setAdapter(tripleAdapter);
 ```
 NOTE : Images from resources and web are also compatable here
