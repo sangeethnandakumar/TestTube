@@ -34,7 +34,7 @@ public class WebServer
         this.context = context;
     }
 
-    public void connectServer(String url)
+    public void getWebpage(String url)
     {
         //Create a request queue
         RequestQueue queue= Volley.newRequestQueue(context);
