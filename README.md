@@ -65,7 +65,38 @@ Important:
 ```
 That's it. The responce from the server will be available on the listner as soon as the server responded.
 Included libraries : Google Volley
-## DOWNLOAD A FILE (network)
-That's it. The responce from the server will be available on the listner as soon as the server responded.
-Included libraries : Easy FTP
-## UPLOAD A FILE (network)
+
+## SIMPLE STANDARD LISTVIEW (adapter)
+Its very simple to use a standard list now
+1. Declare your listview
+```java
+        ListView list=(ListView)findViewById(R.id.listview);
+```
+2. Add your items in a SimpleItem list
+```java
+        List<SimpleItem> simpleItems=new ArrayList<>();
+        simpleItems.add(new SimpleItem("United States"));
+        simpleItems.add(new SimpleItem("India"));
+        simpleItems.add(new SimpleItem("Russia"));
+        simpleItems.add(new SimpleItem("China"));
+```
+a) Add optional resource image if you want it
+```java
+        simpleItems.add(new SimpleItem("Lotus Flower",R.drawable.lotus));
+        simpleItems.add(new SimpleItem("Lilly Flower",R.drawable.lilly));
+        simpleItems.add(new SimpleItem("Rose Flower",R.drawable.rose));
+```
+a) Add optional web image if you want it
+```java
+        simpleItems.add(new SimpleItem("Google","https://www.google.com/something.png"));
+        simpleItems.add(new SimpleItem("Facebook","https://www.facebook.com/something.png"));
+        simpleItems.add(new SimpleItem("YouTube","https://www.youtube.com/something.png"));   
+```
+3. Create a SimpleAdapter
+```java
+        SimpleAdapter simpleAdapter=new SimpleAdapter(getApplicationContext(),simpleItems, AdapterType.LISTVIEW);
+```
+4. Just attach the Adapter to your listview and its over
+```java
+        list.setAdapter(simpleAdapter);
+```
