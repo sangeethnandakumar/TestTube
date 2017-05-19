@@ -14,6 +14,7 @@ import java.util.List;
 import bullyfox.sangeeth.testube.R;
 import bullyfox.sangeeth.testube.component.SimpleItem;
 import bullyfox.sangeeth.testube.options.AdapterImageMode;
+import bullyfox.sangeeth.testube.options.AdapterLayering;
 import bullyfox.sangeeth.testube.options.AdapterType;
 
 /**
@@ -24,13 +25,15 @@ public class SimpleAdapter extends BaseAdapter {
     Context context;
     List<SimpleItem> simpleItems;
     AdapterType adapterType;
+    AdapterLayering layer;
 
-    public SimpleAdapter(Context context, List<SimpleItem> simpleItems, AdapterType adapterType) {
+
+    public SimpleAdapter(Context context, List<SimpleItem> simpleItems, AdapterType adapterType, AdapterLayering layer) {
         this.context = context;
         this.simpleItems = simpleItems;
         this.adapterType = adapterType;
+        this.layer = layer;
     }
-
 
     @Override
     public int getCount() {
@@ -52,7 +55,14 @@ public class SimpleAdapter extends BaseAdapter {
         View v=null;
         if (adapterType==AdapterType.LISTVIEW)
         {
-            v=View.inflate(context, R.layout.listitem_t1,null);
+            if (layer==AdapterLayering.LINEAR)
+            {
+                v=View.inflate(context, R.layout.listitem_t1,null);
+            }
+            else if (layer==AdapterLayering.CARD)
+            {
+                v=View.inflate(context, R.layout.listitem_t1_card,null);
+            }
             TextView maintext=(TextView)v.findViewById(R.id.listitem_t1_maintext);
             maintext.setText(simpleItems.get(i).getMaintext());
             ImageView image=(ImageView)v.findViewById(R.id.listitem_t1_image);
