@@ -6,6 +6,37 @@ The TestTube library project for easy Android implimentations
 [![Travis branch](https://img.shields.io/badge/package-bullyfox.sangeeth.testube-blue.svg)]()
 [![Travis branch](https://img.shields.io/badge/year-2017-red.svg)]()
 
+# Include the Gradle Dependency
+1. On project level Gradle, add
+```gradle
+        allprojects {
+	        repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+```
+2. Add app/module level Gradle, add
+```gradle
+        dependencies {
+	        compile 'com.github.sangeethnandakumar:TestTube:[LATEST_VERSION]' 
+	}
+```
+3. **LATEST_VERSION (Use this version on dependency)** : [![](https://jitpack.io/v/sangeethnandakumar/TestTube.svg)](https://jitpack.io/#sangeethnandakumar/TestTube)
+
+Library Version | Improvements | Dependency
+------------ | ------------- | -------------
+Prior to v2.0.1 | Not available on GitHub | Not available on GitHub
+v2.0.1 | FTP connections now made easy. Another WebServer class devoloped to easly connect and download a webpage source code | com.github.sangeethnandakumar:TestTube:v2.0.1
+
+Important:
+
+[![Travis branch](https://img.shields.io/badge/compiled%20sdk-25-brightgreen.svg)]()
+[![Travis branch](https://img.shields.io/badge/min%20sdk-18-brightgreen.svg)]()
+[![Travis branch](https://img.shields.io/badge/target%20sdk-25-brightgreen.svg)]()
+[![Travis branch](https://img.shields.io/badge/min%20android%20OS-Android%204.3%20Jellybean-brightgreen.svg)]()
+
+
 ## GET A WEBPAGE (network)
 1. Create a WebServer instance
 ```java
