@@ -2,7 +2,7 @@
 The TestTube library project for easy Android implimentations
 [![](https://jitpack.io/v/sangeethnandakumar/TestTube.svg)](https://jitpack.io/#sangeethnandakumar/TestTube)
 
-## GET A WEBPAGE (network/WebServer)
+## GET A WEBPAGE (network)
 1. Create a WebServer instance
 ```java
         WebServer web=new WebServer(getApplicationContext());
@@ -26,5 +26,8 @@ The TestTube library project for easy Android implimentations
         web.getWebpage("https://www.google.com");
 ```
 That's it. The responce from the server will be available on the listner as soon as the server responded.
-## DOWNLOAD A FILE (network/FileServer)
-## UPLOAD A FILE (network/FileServer)
+Included libraries : Google Volley
+## DOWNLOAD A FILE (network)
+That's it. The responce from the server will be available on the listner as soon as the server responded.
+Included libraries : Easy FTP
+## UPLOAD A FILE (network)
