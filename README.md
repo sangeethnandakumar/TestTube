@@ -188,7 +188,7 @@ Android runtime permissions are no longer RoCketScience
                         Manifest.permission.READ_CALENDAR,
                         Manifest.permission.READ_CONTACTS);
 ```
-# YOUR APPLICATION SETTINGS (managers)
+## YOUR APPLICATION SETTINGS (managers)
 1. Wan't to store/retrive your application settings? Simple initialise the AppSettings class with any context
 ```java
 	AppSettings settings=new AppSettings(getApplicationContext());
@@ -208,7 +208,7 @@ Android runtime permissions are no longer RoCketScience
 ```
 NOTE : The settings stores here will persist even the app is closed. (Until uninstalled)
 
-# AUTOSTACK FOR YOUR PAGE MANAGEMENTS (managers)
+## AUTOSTACK FOR YOUR PAGE MANAGEMENTS (managers)
 Its simply a string stack. When you are on a page, then push that PAGE_KEY. When user press BACK button, pop out the PAGE_KEY and check. If nothing to pop out, exit the app. Don't undersatand? Its simply like catching a frog from your pond.
 1. Just initialise the AutoStack
 ```java
