@@ -255,3 +255,53 @@ Its simply a string stack. When you are on a page, then push that PAGE_KEY. When
     }
 ```
 NOTE : STACK space used is not persistant and will be cleared when app restarts or context switched
+
+## GOOGLE DISTANCE MATRIX FOR YOUR ADDRESSES (extended)
+New feature that brings you the address of locations, distance to travel on road along with units and time to travel along with units from Google Servers in its most simplest way
+
+Look at the GoogleDistanceMatrix class initialisation syntax
+```java
+	GoogleDistanceMatrix gdm=new GoogleDistanceMatrix("<YOUR_GOOGLE_KEY>","<ORIGIN_LATTITUDE>","<ORIGIN_LONGITUDE>","<DESTINATION_LATTITUDE>","<DESTINATION_LONGITUDE>",<ANY CONTEXT>);
+
+```
+1. Now initialise it as depected
+```java
+	//Initialise key. You will get this key from here : https://developers.google.com/maps/documentation/distance-matrix/get-api-key
+	String key = "ABcdEfGHIJ7L4YhXw01INDIAHbVlgIhjmouSeVc";
+	
+	//Set origin to 
+	String origin_lat="36.752071";
+	String origin_lng="-119.823064";
+	// Set destination to 
+	String dest_lat="36.773276";
+	String dest_lng="-119.845252";
+	
+	GoogleDistanceMatrix gdm = new GoogleDistanceMatrix(key,origin_lat,origin_lng,dest_lat,dest_lng,getApplicationContext());
+
+```
+2. Simplicity starts right now. Attach that listner
+```java
+	gdm.setOnGDMStatusListner(new GoogleDistanceMatrix.OnGDMStatusListner()
+	{
+		@Override
+		public void onGDMAvailable(GoogleDistanceMatrix gdm)
+		{
+			//Quickly collect details
+                        String origin_address = gdm.getOrgin_address();
+                        String dest_address = gdm.getDest_address();
+                        String distance = gdm.getDistance();
+                        String duration = gdm.getDuration();
+                }
+		
+                @Override
+                public void onGDMFailed()
+                {
+                       //Failed due to some resons
+                }
+         });
+```
+2. Now send that request to GoogleServers via Our server (Complex codes are implimented on our server to keep you smiling). Now just request.!
+```java
+	gdm.getDistanceMatrix();
+```
+NOTE : Details will be arrived at the listners as soon us our server sends it back
