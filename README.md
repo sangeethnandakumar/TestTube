@@ -18,7 +18,7 @@ The TestTube library project for easy Android implimentations
 		}
 	}
 ```
-2. Add app/module level Gradle, add
+2. In app/module level Gradle, add
 ```gradle
         dependencies {
 	        compile 'com.github.sangeethnandakumar:TestTube:[LATEST_VERSION]' 
