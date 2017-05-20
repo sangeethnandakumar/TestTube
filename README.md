@@ -188,3 +188,70 @@ Android runtime permissions are no longer RoCketScience
                         Manifest.permission.READ_CALENDAR,
                         Manifest.permission.READ_CONTACTS);
 ```
+# YOUR APPLICATION SETTINGS (managers)
+1. Wan't to store/retrive your application settings? Simple initialise the AppSettings class with any context
+```java
+	AppSettings settings=new AppSettings(getApplicationContext());
+```
+2. Store what all stuffs you want like (KEY-VALUE) style
+```java
+                settings.saveSettings("username","sangeeth");
+                settings.saveSettings("password","sangeeth@123");
+                settings.saveSettings("points","250");
+                settings.saveSettings("level","5");
+                settings.saveSettings("gender","male");
+```
+3. Retrive what all stored
+```java
+                String username=settings.retriveSettings("username");
+                Toast.makeText(MainActivity.this, "Username is - " + username, Toast.LENGTH_SHORT).show();
+```
+NOTE : The settings stores here will persist even the app is closed. (Until uninstalled)
+
+# AUTOSTACK FOR YOUR PAGE MANAGEMENTS (managers)
+Its simply a string stack. When you are on a page, then push that PAGE_KEY. When user press BACK button, pop out the PAGE_KEY and check. If nothing to pop out, exit the app. Don't undersatand? Its simply like catching a frog from your pond.
+1. Just initialise the AutoStack
+```java
+	AutoStack stack=new AutoStack();
+```
+2. Push while you traverse each pages of something (Assume a book)
+```java
+                // Assume user is presented with a menu
+                // As he enters each menu another menu is appearing (Like a directory)
+
+                // User at page SPACE (SPACE)
+                page.push("space");
+                // User clicks on EARTH (SPACE/EARTH)
+                page.push("earth");
+                // User clicks on ASIA (SPACE/EARTH/ASIA)
+                page.push("asia");
+                // User clicks on INDIA (SPACE/EARTH/ASIA/INDIA)
+                page.push("india");
+```
+3. Override the onBackPressed() methord of your activity
+```java
+    @Override
+    public void onBackPressed()
+    {
+        if (page.isEmpty())
+        {
+            super.onBackPressed();
+        }
+        else
+        {
+            switch (page.pop())
+            {
+                case "india" :
+                    showAsiaMenu();
+                    break;
+                case "asia" :
+                    showEarthMenu();
+                    break;
+                case "space" :
+                    showSpaceMenu();
+                    break;
+            }
+        }
+    }
+```
+NOTE : STACK space used is not persistant and will be cleared when app restarts or context switched
