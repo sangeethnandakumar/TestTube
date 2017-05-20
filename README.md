@@ -29,7 +29,9 @@ The TestTube library project for easy Android implimentations
 Library Version | Improvements | Dependency
 ------------ | ------------- | -------------
 Prior to v2.0.1 | Not available on GitHub | Not available on GitHub
-v2.0.1 | FTP connections now made easy. Another WebServer class devoloped to easly connect and download a webpage source code | com.github.sangeethnandakumar:TestTube:v2.0.1
+v2.0.1 | First update on GitHub. Added support for Standard ListVIew item | com.github.sangeethnandakumar:TestTube:v2.0.1
+v2.0.2/6 | Minor bug fixes and improvements | Depreciated
+v2.1.0 | First minor update. Added support for Standard GridView item, Standard GridView item layering on LINEAR/CARD, Added Permit class to easly ask Android runtime permissions, Added WebServer class to easly request and download the website (source)  | com.github.sangeethnandakumar:TestTube:v2.1.0
 
 Important:
 
@@ -100,7 +102,11 @@ c) Feel free to mix all these
 ```
 3. Create a SimpleAdapter
 ```java
-        SimpleAdapter simpleAdapter=new SimpleAdapter(getApplicationContext(),simpleItems, AdapterType.LISTVIEW);
+        SimpleAdapter simpleAdapter=new SimpleAdapter(getApplicationContext(),simpleItems, AdapterType.LISTVIEW, AdapterLayering.LINEAR);
+```
+a) You can change the AdapterLayering to CARD if you need it
+```java
+        SimpleAdapter simpleAdapter=new SimpleAdapter(getApplicationContext(),simpleItems, AdapterType.LISTVIEW, AdapterLayering.CARD);
 ```
 4. Just attach the Adapter to your listview and its over
 ```java
@@ -116,7 +122,7 @@ Like Simple Standard listview before, Use a standard dual list view
         dualItems.add(new DualItem("Pixel","User in California"));
         dualItems.add(new DualItem("Sony Xperia","User in Japan"));
 	
-        DualAdapter dualAdapter=new DualAdapter(getApplicationContext(),dualItems,AdapterType.LISTVIEW);
+        DualAdapter dualAdapter=new DualAdapter(getApplicationContext(),dualItems,AdapterType.LISTVIEW,AdapterLayering.CARD);
 	
 	list.setAdapter(dualAdapter);
 ```
@@ -133,8 +139,52 @@ Like Dual Standard listview before, Use a standard triple list view
         tripleItems.add(new TripleItem("Dingi","Dog","At Mumbai"));
         tripleItems.add(new TripleItem("Pupy","Dog","At Jammu"));
 	
-        TripleAdapter tripleAdapter=new TripleAdapter(getApplicationContext(),tripleItems,AdapterType.LISTVIEW);
+        TripleAdapter tripleAdapter=new TripleAdapter(getApplicationContext(),tripleItems,AdapterType.LISTVIEW,AdapterLayering.LINEAR);
 	
 	list.setAdapter(tripleAdapter);
 ```
 NOTE : Images from resources and web are also compatable here
+
+## SIMPLE/DUAL/TRIPLE STANDARD GRIDVIEW (adapter)
+Like Simple/Dual/Tripple Standard listview before, Simple change this to make into a GridView
+1. Previous statements are same except here
+```java
+        DualAdapter dualAdapter=new DualAdapter(getApplicationContext(),dualItems,AdapterType.GRIDVIEW,AdapterLayering.CARD);
+	grid.setAdapter(dualAdapter);
+```
+## ASKING RUNTIME PERMISSIONS (permissions)
+Android runtime permissions are no longer RoCketScience
+1. Initialise the Permit object, passing your current activity
+```java
+	Permit permit=new Permit(MainActivity.this);
+```
+2. Simply listen to the permission events using event listner
+```java
+                permit.setOnPermitStatusListner(new Permit.OnPermitStatusListner()
+                {
+                    @Override
+                    public void onAllPermitsGranded()
+                    {
+                        // ALL PERMITS ACCEPTED
+                    }
+
+                    @Override
+                    public void onSomePermitsDenied(ArrayList<String> deniedPermits)
+                    {
+                       // SOME PERMITS ACCEPTED
+                    }
+
+                    @Override
+                    public void onAllPermitsDenied()
+                    {
+                        // ALL PERMITS DENIED
+                    }
+                });
+```
+3. Now just ask for what permissions you need. Yes, It's over
+```java
+                permit.askPermitsFor(
+                        Manifest.permission.CAMERA,
+                        Manifest.permission.READ_CALENDAR,
+                        Manifest.permission.READ_CONTACTS);
+```
