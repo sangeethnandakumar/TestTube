@@ -259,7 +259,7 @@ NOTE : STACK space used is not persistant and will be cleared when app restarts 
 ## GOOGLE DISTANCE MATRIX FOR YOUR ADDRESSES (extended)
 New feature that brings you the address of locations, distance to travel on road along with units and time to travel along with units from Google Servers in its most simplest way
 
-Look at the GoogleDistanceMatrix class initialisation syntax
+0. Look at the GoogleDistanceMatrix class initialisation syntax
 ```java
 	GoogleDistanceMatrix gdm=new GoogleDistanceMatrix("<YOUR_GOOGLE_KEY>","<ORIGIN_LATTITUDE>","<ORIGIN_LONGITUDE>","<DESTINATION_LATTITUDE>","<DESTINATION_LONGITUDE>",<ANY CONTEXT>);
 
@@ -305,3 +305,64 @@ Look at the GoogleDistanceMatrix class initialisation syntax
 	gdm.getDistanceMatrix();
 ```
 NOTE : Details will be arrived at the listners as soon us our server sends it back
+
+## DOWNLOAD A FILE (network)
+Thinking for an ultimate simple way to download an file from an URL? With multithreading and simultanious download features, Here comes the new FileDownloader class
+0. Look at the initialisation syntax
+```java
+	FileDownloader downloader=new FileDownloader(<ANY_CONTEXT>,"<DOWNLOAD_FOLDERNAME>","<DOWNLOAD_FILENAME>");
+```
+1. Now initialise the object like before
+```java
+	FileDownloader downloader=new FileDownloader(getApplicationContext(),"/storage/emulated/0/GLOBAL","myfile.pdf");
+```
+2. Keep track of downloader with these event listners
+```java
+                downloader.setOnDownloadStatusListner(new FileDownloader.OnDownloadStatusListner() {
+                    @Override
+                    public void onStarted()
+                    {
+                    }
+
+                    @Override
+                    public void onConnecting()
+                    {
+                    }
+
+                    @Override
+                    public void onConnected(long total, boolean isRangeSupport)
+                    {
+                    }
+
+                    @Override
+                    public void onDownloading(long finished, long total, int progress)
+                    {
+                    }
+
+                    @Override
+                    public void onCompleted()
+                    {
+                    }
+
+                    @Override
+                    public void onFailed(String message)
+                    {
+                    }
+
+                    @Override
+                    public void onPaused()
+                    {
+                    }
+
+                    @Override
+                    public void onCancelled()
+                    {
+                    }
+                });
+
+```
+3. This is the last step to download. So simple...
+```java
+	downloader.downloadFile("https://www.ece.jhu.edu/~cooper/courses/214/signalsandsystemsnotes.pdf");
+```
+NOTE : The construction and devolopment of this class is in BETA. Unfortunatelly, Pause and Cancel is not working as of now. You can use without any other problems. Pause and Cancel support will be added soon.
