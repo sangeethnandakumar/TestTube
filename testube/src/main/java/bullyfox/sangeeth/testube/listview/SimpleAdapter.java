@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -34,6 +35,7 @@ public class SimpleAdapter extends BaseAdapter {
         this.adapterType = adapterType;
         this.layer = layer;
     }
+
 
     @Override
     public int getCount() {
@@ -83,6 +85,31 @@ public class SimpleAdapter extends BaseAdapter {
         }
         else if (adapterType==AdapterType.GRIDVIEW)
         {
+            if (layer==AdapterLayering.LINEAR)
+            {
+                v=View.inflate(context, R.layout.griditem_t1,null);
+            }
+            else if (layer==AdapterLayering.CARD)
+            {
+                v=View.inflate(context, R.layout.griditem_t1_card,null);
+            }
+            TextView maintext=(TextView)v.findViewById(R.id.listitem_t1_maintext);
+            maintext.setText(simpleItems.get(i).getMaintext());
+            ImageView image=(ImageView)v.findViewById(R.id.listitem_t1_image);
+            if (simpleItems.get(i).getImagemode()==AdapterImageMode.RESOURCE)
+            {
+                image.setVisibility(View.VISIBLE);
+                image.setImageResource(simpleItems.get(i).getImageres());
+            }
+            else if (simpleItems.get(i).getImagemode()==AdapterImageMode.WEB)
+            {
+                image.setVisibility(View.VISIBLE);
+                Picasso.with(context).load(simpleItems.get(i).getWebres()).into(image);
+            }
+            else if (simpleItems.get(i).getImagemode()==AdapterImageMode.NONE)
+            {
+                image.setVisibility(View.GONE);
+            }
         }
         return v;
     }

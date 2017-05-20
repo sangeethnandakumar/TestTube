@@ -5,18 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <ImageView
+            android:layout_gravity="center"
             android:id="@+id/listitem_t1_image"
             android:src="@drawable/flower"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:layout_width="40dp"
             android:layout_height="match_parent" />
         <TextView
+            android:textAlignment="center"
             android:textSize="15dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
