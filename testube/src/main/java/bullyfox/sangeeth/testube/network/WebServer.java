@@ -1,12 +1,22 @@
 package bullyfox.sangeeth.testube.network;
 
+import android.app.Activity;
 import android.content.Context;
+import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+
+import java.io.File;
+import java.util.List;
+
+import bullyfox.sangeeth.testube.component.DataRack;
+import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
+import okhttp3.RequestBody;
 
 /**
  * Created by Sangeeth Nandakumar on 18-05-2017.
@@ -15,6 +25,7 @@ import com.android.volley.toolbox.Volley;
 public class WebServer
 {
     private Context context;
+    String posturl;
 
     public interface OnServerStatusListner
     {
@@ -34,7 +45,7 @@ public class WebServer
         this.context = context;
     }
 
-    public void getWebpage(String url)
+    public void connectWithGET(String url)
     {
         //Create a request queue
         RequestQueue queue= Volley.newRequestQueue(context);
@@ -60,6 +71,40 @@ public class WebServer
                 });
         //Add the request to queue
         queue.add(stringRequest);
+    }
+
+    public void connectWithPOST(Activity myactivity, String url, List<DataRack> dataRacks)
+    {
+        PostWorker worker=new PostWorker(context,myactivity,url,dataRacks);
+        worker.setOnPostStatusListner(new PostWorker.OnPostStatusListner() {
+            @Override
+            public void onPostSuccess(String responce) {
+                listner.onServerResponded(responce);
+            }
+
+            @Override
+            public void onPostFailed() {
+                listner.onServerRevoked();
+            }
+        });
+        worker.execute(url);
+    }
+
+    public void connectWithPOST(Activity myactivity, String url, File file,String filename)
+    {
+        PostWorker worker=new PostWorker(context,myactivity,url,file,filename);
+        worker.setOnPostStatusListner(new PostWorker.OnPostStatusListner() {
+            @Override
+            public void onPostSuccess(String responce) {
+                listner.onServerResponded(responce);
+            }
+
+            @Override
+            public void onPostFailed() {
+                listner.onServerRevoked();
+            }
+        });
+        worker.execute(url);
     }
 
 }

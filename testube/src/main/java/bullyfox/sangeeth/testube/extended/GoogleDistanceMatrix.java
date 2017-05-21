@@ -72,7 +72,7 @@ public class GoogleDistanceMatrix
             {
             }
         });
-        server.getWebpage("http://sangeethnandakumar.esy.es/PROJECTS/PUBLIC_SERVICE/gdm.php?key="+key+"&olat="+olat+"&olng="+olng+"&dlat="+dlat+"&dlng="+dlng);
+        server.connectWithGET("http://sangeethnandakumar.esy.es/PROJECTS/PUBLIC_SERVICE/gdm.php?key="+key+"&olat="+olat+"&olng="+olng+"&dlat="+dlat+"&dlng="+dlng);
     }
 
     public String getOrgin_address() {

@@ -39,15 +39,15 @@ public class FileDownloader {
         this.listner=listner;
     }
 
-    public FileDownloader(Context context, String storageLocation, String filename) {
+    public FileDownloader(Context context, String downloadURL) {
         this.context = context;
-        this.storageLocation = storageLocation;
-        this.filename = filename;
+        this.downloadURL=downloadURL;
     }
 
-    public void downloadFile(String url)
+    public void downloadFile(String storageLocation, String filename)
     {
-        downloadURL=url;
+        this.filename=filename;
+        this.storageLocation=storageLocation;
         DownloadConfiguration configuration = new DownloadConfiguration();
         configuration.setMaxThreadNum(10);
         configuration.setThreadNum(3);
@@ -59,7 +59,7 @@ public class FileDownloader {
                 .setFolder(new File(storageLocation))
                 .build();
 
-        DownloadManager.getInstance().download(request, url, new CallBack() {
+        DownloadManager.getInstance().download(request, downloadURL, new CallBack() {
             @Override
             public void onStarted() {
                listner.onStarted();
@@ -102,13 +102,4 @@ public class FileDownloader {
         });
     }
 
-    public void pauseDownload(String url)
-    {
-        DownloadManager.getInstance().pause(url);
-    }
-
-    public void cancelDownload(String url)
-    {
-        DownloadManager.getInstance().cancel(url);
-    }
 }
