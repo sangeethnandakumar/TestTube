@@ -42,32 +42,6 @@ Important:
 
 #
 
-## GET A WEBPAGE (network)
-1. Create a WebServer instance
-```java
-        WebServer web=new WebServer(getApplicationContext());
-```
-2. Attach a status lister to our server
-```java
-        web.setOnServerStatusListner(new WebServer.OnServerStatusListner() {
-            @Override
-            public void onServerResponded(String responce) {
-            
-            }
-
-            @Override
-            public void onServerRevoked() {
-
-            }
-        });
-```
-3. Now just connect to the server
-```java
-        web.getWebpage("https://www.google.com");
-```
-That's it. The responce from the server will be available on the listner as soon as the server responded.
-Included libraries : Google Volley
-
 ## SIMPLE STANDARD LISTVIEW (adapter)
 Its very simple to use a standard list now
 1. Declare your listview
@@ -189,6 +163,8 @@ Android runtime permissions are no longer RoCketScience
                         Manifest.permission.READ_CONTACTS);
 ```
 ## YOUR APPLICATION SETTINGS (managers)
+![App Settings Demo](https://github.com/sangeethnandakumar/TestTube/blob/master/AppSettings.gif)
+
 1. Wan't to store/retrive your application settings? Simple initialise the AppSettings class with any context
 ```java
 	AppSettings settings=new AppSettings(getApplicationContext());
@@ -300,13 +276,15 @@ New feature that brings you the address of locations, distance to travel on road
                 }
          });
 ```
-2. Now send that request to GoogleServers via Our server (Complex codes are implimented on our server to keep you smiling). Now just request.!
+3. Now send that request to GoogleServers via Our server (Complex codes are implimented on our server to keep you smiling). Now just request.!
 ```java
 	gdm.getDistanceMatrix();
 ```
 NOTE : Details will be arrived at the listners as soon us our server sends it back
 
 ## DOWNLOAD A FILE (network)
+![File Downloading Demo](https://github.com/sangeethnandakumar/TestTube/blob/master/FileDownloader.gif)
+
 Thinking for an ultimate simple way to download an file from an URL? With multithreading and simultanious download features, Here comes the new FileDownloader class
 0. Look at the initialisation syntax
 ```java
@@ -366,3 +344,61 @@ Thinking for an ultimate simple way to download an file from an URL? With multit
 	downloader.downloadFile("https://www.ece.jhu.edu/~cooper/courses/214/signalsandsystemsnotes.pdf");
 ```
 NOTE : The construction and devolopment of this class is in BETA. Unfortunatelly, Pause and Cancel is not working as of now. You can use without any other problems. Pause and Cancel support will be added soon.
+
+## HTTP GET REQUEST (network)
+![Http GET Demo](https://github.com/sangeethnandakumar/TestTube/blob/master/HttpGET.gif)
+
+Http GET methord requests a server with inline parameters on its URL. DOn't use Http GET to transfer passwords!. Http GET is best for visible parameters and easy to debug
+1. Initialise a WebServer instance and start its listners
+```java
+		WebServer server=new WebServer(getApplicationContext());
+                
+                server.setOnServerStatusListner(new WebServer.OnServerStatusListner() {
+                    @Override
+                    public void onServerResponded(String responce) {
+                        
+                    }
+
+                    @Override
+                    public void onServerRevoked() {
+
+                    }
+                });
+````
+2. Now just call the server with GET parameters
+```java
+		server.connectWithGET("https://www.google.com/test.php?name=Sangeeth&loc=India");
+````
+
+
+## HTTP POST REQUEST (network)
+![Http GET Demo](https://github.com/sangeethnandakumar/TestTube/blob/master/HttpPOST.gif)
+
+Http POST methord requests a server with unvisible parameters. Usefull to transport passwords.
+1. Initialise a WebServer instance and start its listners
+```java
+		WebServer server=new WebServer(getApplicationContext());
+                
+                server.setOnServerStatusListner(new WebServer.OnServerStatusListner() {
+                    @Override
+                    public void onServerResponded(String responce) {
+                        
+                    }
+
+                    @Override
+                    public void onServerRevoked() {
+
+                    }
+                });
+````
+3. Create a list of DataRack for your key-value pairs
+```java
+                List<DataRack> racks=new ArrayList<DataRack>();
+                racks.add(new DataRack("name","Simon"));
+                racks.add(new DataRack("age","40"));
+                racks.add(new DataRack("location","Canada"));
+````
+2. Now just call the server with POST rack along caller activity
+```java
+                server.connectWithPOST(MainActivity.this,"http://sangeethnandakumar.esy.es/PROJECTS/PUBLIC_SERVICE/posttest.php",racks);
+````
