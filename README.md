@@ -11,8 +11,10 @@ The TestTube library project for easy Android implimentations
 # Include the Gradle Dependency
 1. On project level Gradle, add
 ```gradle
-        allprojects {
-	        repositories {
+        allprojects
+	{
+		repositories 
+		{
 			...
 			maven { url 'https://jitpack.io' }
 		}
@@ -20,7 +22,8 @@ The TestTube library project for easy Android implimentations
 ```
 2. In app/module level Gradle, add
 ```gradle
-        dependencies {
+        dependencies 
+	{
 	        compile 'com.github.sangeethnandakumar:TestTube:[LATEST_VERSION]' 
 	}
 ```
@@ -56,13 +59,22 @@ Its very simple to use a standard list now
         simpleItems.add(new SimpleItem("Russia"));
         simpleItems.add(new SimpleItem("China"));
 ```
+3. Create a SimpleAdapter
+```java
+        SimpleAdapter simpleAdapter=new SimpleAdapter(getApplicationContext(),simpleItems, AdapterType.LISTVIEW, AdapterLayering.LINEAR);
+```
+4. Just attach the Adapter to your listview and its over
+```java
+        list.setAdapter(simpleAdapter);
+```
+### You done everything.!!!, For further minimal customizing
 a) Add optional resource image if you want it
 ```java
         simpleItems.add(new SimpleItem("Lotus Flower",R.drawable.lotus));
         simpleItems.add(new SimpleItem("Lilly Flower",R.drawable.lilly));
         simpleItems.add(new SimpleItem("Rose Flower",R.drawable.rose));
 ```
-b) Add optional web image if you want it
+b) Add optional web image if you want it (requires internet)
 ```java
         simpleItems.add(new SimpleItem("Google","https://www.google.com/something.png"));
         simpleItems.add(new SimpleItem("Facebook","https://www.facebook.com/something.png"));
@@ -74,18 +86,12 @@ c) Feel free to mix all these
         simpleItems.add(new SimpleItem("Resource image",R.drawable.elephant));
         simpleItems.add(new SimpleItem("Web image","https://www.google.com/something.png"));
 ```
-3. Create a SimpleAdapter
-```java
-        SimpleAdapter simpleAdapter=new SimpleAdapter(getApplicationContext(),simpleItems, AdapterType.LISTVIEW, AdapterLayering.LINEAR);
-```
+### Another way
 a) You can change the AdapterLayering to CARD if you need it
 ```java
         SimpleAdapter simpleAdapter=new SimpleAdapter(getApplicationContext(),simpleItems, AdapterType.LISTVIEW, AdapterLayering.CARD);
 ```
-4. Just attach the Adapter to your listview and its over
-```java
-        list.setAdapter(simpleAdapter);
-```
+
 ## DUAL STANDARD LISTVIEW (adapter)
 Like Simple Standard listview before, Use a standard dual list view
 1. Previous statements are same except here
@@ -162,7 +168,7 @@ Android runtime permissions are no longer RoCketScience
                         Manifest.permission.READ_CALENDAR,
                         Manifest.permission.READ_CONTACTS);
 ```
-## YOUR APPLICATION SETTINGS (managers)
+## PERMANANT SETTINGS FOR YOUR APP (managers)
 ![App Settings Demo](https://github.com/sangeethnandakumar/TestTube/blob/master/AppSettings.gif)
 
 1. Wan't to store/retrive your application settings? Simple initialise the AppSettings class with any context
