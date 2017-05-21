@@ -133,6 +133,8 @@ Like Simple/Dual/Tripple Standard listview before, Simple change this to make in
 	grid.setAdapter(dualAdapter);
 ```
 ## ASKING RUNTIME PERMISSIONS (permissions)
+![Runtime permission demo](https://github.com/sangeethnandakumar/TestTube/blob/master/RuntimePermission.gif)
+
 Android runtime permissions are no longer RoCketScience
 1. Initialise the Permit object, passing your current activity
 ```java
@@ -239,6 +241,8 @@ Its simply a string stack. When you are on a page, then push that PAGE_KEY. When
 NOTE : STACK space used is not persistant and will be cleared when app restarts or context switched
 
 ## GOOGLE DISTANCE MATRIX FOR YOUR ADDRESSES (extended)
+![Runtime permission demo](https://github.com/sangeethnandakumar/TestTube/blob/master/GDM.gif)
+
 New feature that brings you the address of locations, distance to travel on road along with units and time to travel along with units from Google Servers in its most simplest way
 
 0. Look at the GoogleDistanceMatrix class initialisation syntax
