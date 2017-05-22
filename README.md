@@ -9,6 +9,8 @@ The TestTube library project for easy Android implimentations
 ![TestTube Logo](https://github.com/sangeethnandakumar/TestTube/blob/master/logo.png)
 
 # Include the Gradle Dependency
+![TestTube Logo](https://github.com/sangeethnandakumar/TestTube/blob/master/allprojects.PNG)
+
 1. On project level Gradle, add
 ```gradle
         allprojects
@@ -21,6 +23,8 @@ The TestTube library project for easy Android implimentations
 	}
 ```
 2. In app/module level Gradle, add
+![TestTube Logo](https://github.com/sangeethnandakumar/TestTube/blob/master/dependency.PNG)
+
 ```gradle
         dependencies 
 	{
