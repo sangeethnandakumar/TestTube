@@ -32,13 +32,13 @@ The TestTube library project for easy Android implimentations
 Library Version | Improvements | Dependency
 ------------ | ------------- | -------------
 Prior to v2.0.1 | Not available on GitHub | Not available on GitHub
-v2.0.1 | Added : Simple standard listview<br>Removed : Old WebServer class | com.github.sangeethnandakumar:TestTube:v2.0.1
-v2.0.2 | Minor bug fixes and improvements | com.github.sangeethnandakumar:TestTube:v2.0.2
+v2.0.1 | New : Standard listview (SLV)<br>Removed : Old WebServer class | com.github.sangeethnandakumar:TestTube:v2.0.1
+v2.0.2 | Upgraded : SLV now supports linear/card layerings<br>Upgraded : Specification added to adapter | com.github.sangeethnandakumar:TestTube:v2.0.2
 v2.0.3 | Minor bug fixes and improvements | com.github.sangeethnandakumar:TestTube:v2.0.3
-v2.0.4 | Minor bug fixes and improvements | com.github.sangeethnandakumar:TestTube:v2.0.4
-v2.0.5 | Minor bug fixes and improvements | com.github.sangeethnandakumar:TestTube:v2.0.5
-v2.1.0 | Minor bug fixes and improvements | com.github.sangeethnandakumar:TestTube:v2.1.0
-v2.5.0 | Minor bug fixes and improvements | com.github.sangeethnandakumar:TestTube:v2.5.0
+v2.0.4 | New : Standard gridview (SGV)<br>New : Support for gridview card/linear layering<br>New : SGV supports drawable or web resource<br>Upgraded : Code optimised | com.github.sangeethnandakumar:TestTube:v2.0.4
+v2.0.5 | New : Android runtime permission helper<br>Upgraded : Permit class to support multimple permissions at once<br>Upgraded : Permission reponce interface | com.github.sangeethnandakumar:TestTube:v2.0.5
+v2.1.0 | New : Permanant settings<br>New : Autostack page stack<br>Beta : Google Distance Metrix initial phase (GDM) | com.github.sangeethnandakumar:TestTube:v2.1.0
+v2.5.0 | Upgraded : Google Distance Metrix fully implemented<br>New : Support for Http GET request<br>New : Support for Http POST request<br>Upgraded : POST request to send a DataRack | com.github.sangeethnandakumar:TestTube:v2.5.0
 
 Important:
 
