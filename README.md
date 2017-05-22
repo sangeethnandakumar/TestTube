@@ -46,6 +46,8 @@ Important:
 #
 
 ## SIMPLE STANDARD LISTVIEW (adapter)
+![Runtime permission demo](https://github.com/sangeethnandakumar/TestTube/blob/master/StandardListview.gif)
+
 Its very simple to use a standard list now
 1. Declare your listview
 ```java
@@ -92,7 +94,7 @@ a) You can change the AdapterLayering to CARD if you need it
         SimpleAdapter simpleAdapter=new SimpleAdapter(getApplicationContext(),simpleItems, AdapterType.LISTVIEW, AdapterLayering.CARD);
 ```
 
-## DUAL STANDARD LISTVIEW (adapter)
+### DUAL STANDARD LISTVIEW (adapter)
 Like Simple Standard listview before, Use a standard dual list view
 1. Previous statements are same except here
 ```java
@@ -108,7 +110,7 @@ Like Simple Standard listview before, Use a standard dual list view
 ```
 NOTE : Images from resources and web are also compatable here
 
-## TRIPLE STANDARD LISTVIEW (adapter)
+### TRIPLE STANDARD LISTVIEW (adapter)
 Like Dual Standard listview before, Use a standard triple list view
 1. Statements are changed like
 ```java
@@ -126,6 +128,8 @@ Like Dual Standard listview before, Use a standard triple list view
 NOTE : Images from resources and web are also compatable here
 
 ## SIMPLE/DUAL/TRIPLE STANDARD GRIDVIEW (adapter)
+![Runtime permission demo](https://github.com/sangeethnandakumar/TestTube/blob/master/StandardGridview.gif)
+
 Like Simple/Dual/Tripple Standard listview before, Simple change this to make into a GridView
 1. Previous statements are same except here
 ```java
