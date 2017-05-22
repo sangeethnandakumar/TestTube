@@ -32,9 +32,13 @@ The TestTube library project for easy Android implimentations
 Library Version | Improvements | Dependency
 ------------ | ------------- | -------------
 Prior to v2.0.1 | Not available on GitHub | Not available on GitHub
-v2.0.1 | First update on GitHub. Added support for Standard ListVIew item | com.github.sangeethnandakumar:TestTube:v2.0.1
-v2.0.2/6 | Minor bug fixes and improvements | Depreciated
-v2.1.0 | First minor update. Added support for Standard GridView item, Standard GridView item layering on LINEAR/CARD, Added Permit class to easly ask Android runtime permissions, Added WebServer class to easly request and download the website (source)  | com.github.sangeethnandakumar:TestTube:v2.1.0
+v2.0.1 | Added : Simple standard listview<br>Removed : Old WebServer class | com.github.sangeethnandakumar:TestTube:v2.0.1
+v2.0.2 | Minor bug fixes and improvements | com.github.sangeethnandakumar:TestTube:v2.0.2
+v2.0.3 | Minor bug fixes and improvements | com.github.sangeethnandakumar:TestTube:v2.0.3
+v2.0.4 | Minor bug fixes and improvements | com.github.sangeethnandakumar:TestTube:v2.0.4
+v2.0.5 | Minor bug fixes and improvements | com.github.sangeethnandakumar:TestTube:v2.0.5
+v2.1.0 | Minor bug fixes and improvements | com.github.sangeethnandakumar:TestTube:v2.1.0
+v2.5.0 | Minor bug fixes and improvements | com.github.sangeethnandakumar:TestTube:v2.5.0
 
 Important:
 
