@@ -495,3 +495,30 @@ IMPORTANT NOTE
 4. On save prompt - Include ".db" extension after filename
 5. Done, Now import to assets folder
 ```
+
+## SYNTAX HIGHLIGHTING (extended)
+![Runtime permission demo](https://github.com/sangeethnandakumar/TestTube/blob/master/SyntaxHighlight.gif)
+
+Online syntax highlighting highlights any language code segment with HTML that you can render on a WebView easly
+1. Create the object
+```java
+	SyntaxLight syntax=new SyntaxLight(getApplicationContext(),"PHP","<?php echo 'Hello world'; ?>");
+```
+2. Implement the listners
+```java
+                    syntax.setOnCodeStatusListner(new SyntaxLight.OnCodeStatusListner() {
+                        @Override
+                        public void parsedToHTML(String s) {
+                            //You got HTML here
+                        }
+
+                        @Override
+                        public void parseError() {
+
+                        }
+                    });
+```
+3. Now highlight the code
+```java
+	syntax.highlightCode();
+```
