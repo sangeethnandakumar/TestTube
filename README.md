@@ -9,18 +9,25 @@ The TestTube library project for easy Android implimentations
 ![TestTube Logo](https://github.com/sangeethnandakumar/TestTube/blob/master/logo.png)
 
 # Include the Gradle Dependency
+![TestTube Logo](https://github.com/sangeethnandakumar/TestTube/blob/master/allprojects.PNG)
+
 1. On project level Gradle, add
 ```gradle
-        allprojects {
-	        repositories {
+        allprojects
+	{
+		repositories 
+		{
 			...
 			maven { url 'https://jitpack.io' }
 		}
 	}
 ```
 2. In app/module level Gradle, add
+![TestTube Logo](https://github.com/sangeethnandakumar/TestTube/blob/master/dependency.PNG)
+
 ```gradle
-        dependencies {
+        dependencies 
+	{
 	        compile 'com.github.sangeethnandakumar:TestTube:[LATEST_VERSION]' 
 	}
 ```
@@ -29,9 +36,13 @@ The TestTube library project for easy Android implimentations
 Library Version | Improvements | Dependency
 ------------ | ------------- | -------------
 Prior to v2.0.1 | Not available on GitHub | Not available on GitHub
-v2.0.1 | First update on GitHub. Added support for Standard ListVIew item | com.github.sangeethnandakumar:TestTube:v2.0.1
-v2.0.2/6 | Minor bug fixes and improvements | Depreciated
-v2.1.0 | First minor update. Added support for Standard GridView item, Standard GridView item layering on LINEAR/CARD, Added Permit class to easly ask Android runtime permissions, Added WebServer class to easly request and download the website (source)  | com.github.sangeethnandakumar:TestTube:v2.1.0
+v2.0.1 | New : Standard listview (SLV)<br>Removed : Old WebServer class | com.github.sangeethnandakumar:TestTube:v2.0.1
+v2.0.2 | Upgraded : SLV now supports linear/card layerings<br>Upgraded : Specification added to adapter | com.github.sangeethnandakumar:TestTube:v2.0.2
+v2.0.3 | New : Fully implemented FileDownloader class for url downloads<br>Minor bug fixes and improvements<br>New : WebDoc class to convert a webpage to pdf | com.github.sangeethnandakumar:TestTube:v2.0.3
+v2.0.4 | New : Standard gridview (SGV)<br>New : Support for gridview card/linear layering<br>New : SGV supports drawable or web resource<br>Upgraded : Code optimised | com.github.sangeethnandakumar:TestTube:v2.0.4
+v2.0.5 | New : Android runtime permission helper<br>Upgraded : Permit class to support multimple permissions at once<br>Upgraded : Permission reponce interface | com.github.sangeethnandakumar:TestTube:v2.0.5
+v2.1.0 | New : Permanant settings<br>New : Autostack page stack<br>Beta : Google Distance Metrix initial phase (GDM) | com.github.sangeethnandakumar:TestTube:v2.1.0
+v2.5.0 | Upgraded : Google Distance Metrix fully implemented<br>New : Support for Http GET request<br>New : Support for Http POST request<br>Upgraded : POST request to send a DataRack | com.github.sangeethnandakumar:TestTube:v2.5.0
 
 Important:
 
@@ -42,33 +53,9 @@ Important:
 
 #
 
-## GET A WEBPAGE (network)
-1. Create a WebServer instance
-```java
-        WebServer web=new WebServer(getApplicationContext());
-```
-2. Attach a status lister to our server
-```java
-        web.setOnServerStatusListner(new WebServer.OnServerStatusListner() {
-            @Override
-            public void onServerResponded(String responce) {
-            
-            }
-
-            @Override
-            public void onServerRevoked() {
-
-            }
-        });
-```
-3. Now just connect to the server
-```java
-        web.getWebpage("https://www.google.com");
-```
-That's it. The responce from the server will be available on the listner as soon as the server responded.
-Included libraries : Google Volley
-
 ## SIMPLE STANDARD LISTVIEW (adapter)
+![Runtime permission demo](https://github.com/sangeethnandakumar/TestTube/blob/master/StandardListview.gif)
+
 Its very simple to use a standard list now
 1. Declare your listview
 ```java
@@ -82,13 +69,22 @@ Its very simple to use a standard list now
         simpleItems.add(new SimpleItem("Russia"));
         simpleItems.add(new SimpleItem("China"));
 ```
+3. Create a SimpleAdapter
+```java
+        SimpleAdapter simpleAdapter=new SimpleAdapter(getApplicationContext(),simpleItems, AdapterType.LISTVIEW, AdapterLayering.LINEAR);
+```
+4. Just attach the Adapter to your listview and its over
+```java
+        list.setAdapter(simpleAdapter);
+```
+### You done everything.!!!, For further minimal customizing
 a) Add optional resource image if you want it
 ```java
         simpleItems.add(new SimpleItem("Lotus Flower",R.drawable.lotus));
         simpleItems.add(new SimpleItem("Lilly Flower",R.drawable.lilly));
         simpleItems.add(new SimpleItem("Rose Flower",R.drawable.rose));
 ```
-b) Add optional web image if you want it
+b) Add optional web image if you want it (requires internet)
 ```java
         simpleItems.add(new SimpleItem("Google","https://www.google.com/something.png"));
         simpleItems.add(new SimpleItem("Facebook","https://www.facebook.com/something.png"));
@@ -100,19 +96,13 @@ c) Feel free to mix all these
         simpleItems.add(new SimpleItem("Resource image",R.drawable.elephant));
         simpleItems.add(new SimpleItem("Web image","https://www.google.com/something.png"));
 ```
-3. Create a SimpleAdapter
-```java
-        SimpleAdapter simpleAdapter=new SimpleAdapter(getApplicationContext(),simpleItems, AdapterType.LISTVIEW, AdapterLayering.LINEAR);
-```
+### Another way
 a) You can change the AdapterLayering to CARD if you need it
 ```java
         SimpleAdapter simpleAdapter=new SimpleAdapter(getApplicationContext(),simpleItems, AdapterType.LISTVIEW, AdapterLayering.CARD);
 ```
-4. Just attach the Adapter to your listview and its over
-```java
-        list.setAdapter(simpleAdapter);
-```
-## DUAL STANDARD LISTVIEW (adapter)
+
+### DUAL STANDARD LISTVIEW (adapter)
 Like Simple Standard listview before, Use a standard dual list view
 1. Previous statements are same except here
 ```java
@@ -128,7 +118,7 @@ Like Simple Standard listview before, Use a standard dual list view
 ```
 NOTE : Images from resources and web are also compatable here
 
-## TRIPLE STANDARD LISTVIEW (adapter)
+### TRIPLE STANDARD LISTVIEW (adapter)
 Like Dual Standard listview before, Use a standard triple list view
 1. Statements are changed like
 ```java
@@ -146,6 +136,8 @@ Like Dual Standard listview before, Use a standard triple list view
 NOTE : Images from resources and web are also compatable here
 
 ## SIMPLE/DUAL/TRIPLE STANDARD GRIDVIEW (adapter)
+![Runtime permission demo](https://github.com/sangeethnandakumar/TestTube/blob/master/StandardGridview.gif)
+
 Like Simple/Dual/Tripple Standard listview before, Simple change this to make into a GridView
 1. Previous statements are same except here
 ```java
@@ -153,6 +145,8 @@ Like Simple/Dual/Tripple Standard listview before, Simple change this to make in
 	grid.setAdapter(dualAdapter);
 ```
 ## ASKING RUNTIME PERMISSIONS (permissions)
+![Runtime permission demo](https://github.com/sangeethnandakumar/TestTube/blob/master/RuntimePermission.gif)
+
 Android runtime permissions are no longer RoCketScience
 1. Initialise the Permit object, passing your current activity
 ```java
@@ -188,7 +182,9 @@ Android runtime permissions are no longer RoCketScience
                         Manifest.permission.READ_CALENDAR,
                         Manifest.permission.READ_CONTACTS);
 ```
-## YOUR APPLICATION SETTINGS (managers)
+## PERMANANT SETTINGS FOR YOUR APP (managers)
+![App Settings Demo](https://github.com/sangeethnandakumar/TestTube/blob/master/AppSettings.gif)
+
 1. Wan't to store/retrive your application settings? Simple initialise the AppSettings class with any context
 ```java
 	AppSettings settings=new AppSettings(getApplicationContext());
@@ -257,6 +253,8 @@ Its simply a string stack. When you are on a page, then push that PAGE_KEY. When
 NOTE : STACK space used is not persistant and will be cleared when app restarts or context switched
 
 ## GOOGLE DISTANCE MATRIX FOR YOUR ADDRESSES (extended)
+![Runtime permission demo](https://github.com/sangeethnandakumar/TestTube/blob/master/GDM.gif)
+
 New feature that brings you the address of locations, distance to travel on road along with units and time to travel along with units from Google Servers in its most simplest way
 
 0. Look at the GoogleDistanceMatrix class initialisation syntax
@@ -300,13 +298,15 @@ New feature that brings you the address of locations, distance to travel on road
                 }
          });
 ```
-2. Now send that request to GoogleServers via Our server (Complex codes are implimented on our server to keep you smiling). Now just request.!
+3. Now send that request to GoogleServers via Our server (Complex codes are implimented on our server to keep you smiling). Now just request.!
 ```java
 	gdm.getDistanceMatrix();
 ```
 NOTE : Details will be arrived at the listners as soon us our server sends it back
 
 ## DOWNLOAD A FILE (network)
+![File Downloading Demo](https://github.com/sangeethnandakumar/TestTube/blob/master/FileDownloader.gif)
+
 Thinking for an ultimate simple way to download an file from an URL? With multithreading and simultanious download features, Here comes the new FileDownloader class
 0. Look at the initialisation syntax
 ```java
@@ -366,3 +366,61 @@ Thinking for an ultimate simple way to download an file from an URL? With multit
 	downloader.downloadFile("https://www.ece.jhu.edu/~cooper/courses/214/signalsandsystemsnotes.pdf");
 ```
 NOTE : The construction and devolopment of this class is in BETA. Unfortunatelly, Pause and Cancel is not working as of now. You can use without any other problems. Pause and Cancel support will be added soon.
+
+## HTTP GET REQUEST (network)
+![Http GET Demo](https://github.com/sangeethnandakumar/TestTube/blob/master/HttpGET.gif)
+
+Http GET methord requests a server with inline parameters on its URL. DOn't use Http GET to transfer passwords!. Http GET is best for visible parameters and easy to debug
+1. Initialise a WebServer instance and start its listners
+```java
+		WebServer server=new WebServer(getApplicationContext());
+                
+                server.setOnServerStatusListner(new WebServer.OnServerStatusListner() {
+                    @Override
+                    public void onServerResponded(String responce) {
+                        
+                    }
+
+                    @Override
+                    public void onServerRevoked() {
+
+                    }
+                });
+````
+2. Now just call the server with GET parameters
+```java
+		server.connectWithGET("https://www.google.com/test.php?name=Sangeeth&loc=India");
+````
+
+
+## HTTP POST REQUEST (network)
+![Http GET Demo](https://github.com/sangeethnandakumar/TestTube/blob/master/HttpPOST.gif)
+
+Http POST methord requests a server with unvisible parameters. Usefull to transport passwords.
+1. Initialise a WebServer instance and start its listners
+```java
+		WebServer server=new WebServer(getApplicationContext());
+                
+                server.setOnServerStatusListner(new WebServer.OnServerStatusListner() {
+                    @Override
+                    public void onServerResponded(String responce) {
+                        
+                    }
+
+                    @Override
+                    public void onServerRevoked() {
+
+                    }
+                });
+````
+3. Create a list of DataRack for your key-value pairs
+```java
+                List<DataRack> racks=new ArrayList<DataRack>();
+                racks.add(new DataRack("name","Simon"));
+                racks.add(new DataRack("age","40"));
+                racks.add(new DataRack("location","Canada"));
+````
+2. Now just call the server with POST rack along caller activity
+```java
+                server.connectWithPOST(MainActivity.this,"http://sangeethnandakumar.esy.es/PROJECTS/PUBLIC_SERVICE/posttest.php",racks);
+````
