@@ -387,8 +387,7 @@ Http GET methord requests a server with inline parameters on its URL. DOn't use 
 2. Now just call the server with GET parameters
 ```java
 		server.connectWithGET("https://www.google.com/test.php?name=Sangeeth&loc=India");
-````
-
+```
 
 ## HTTP POST REQUEST (network)
 ![Http GET Demo](https://github.com/sangeethnandakumar/TestTube/blob/master/HttpPOST.gif)
@@ -420,4 +419,51 @@ Http POST methord requests a server with unvisible parameters. Usefull to transp
 2. Now just call the server with POST rack along caller activity
 ```java
                 server.connectWithPOST(MainActivity.this,"http://sangeethnandakumar.esy.es/PROJECTS/PUBLIC_SERVICE/posttest.php",racks);
-````
+```
+
+## SUPER DATABASE (managers)
+![Runtime permission demo](https://github.com/sangeethnandakumar/TestTube/blob/master/superlocaldatabase.gif)
+
+Messed up with Android database implementations? Here is the perfect pure simple SQL database
+0. Look at the syntax
+```java
+	SuperDatabase database=new SuperDatabase(<CONTEXT>,<DATABASE_NAME>,<DB_SCHEMA>);
+
+```
+1. Declare the SuperDatabase
+```java
+	SuperDatabase database=new SuperDatabase(getApplicationContext(),"Foods","CREATE TABLE IF NOT EXISTS food('name' VARCHAR(20),'vitamin' VARCHAR(20);");
+
+```
+Now fire the queries
+a). Create an INJECT statement, If you have a non returning query
+```java
+                    database.sqlInject("INSERT INTO food VALUES('Banana','Vitamin A');");
+                    database.sqlInject("INSERT INTO food VALUES('Apple','Vitamin B');");
+                    database.sqlInject("INSERT INTO food VALUES('Grapes','Vitamin C');");
+```
+It will simply executes...
+
+b). Create an EJECT statement, If you have a returning query
+```java
+                    <return_var> = database.sqlEjectCSV("SELECT * FROM food;");
+```
+b). EJECT statement can eject data in CSV, JSON & XML formats. CSV needs an ArrayList<Srtings>
+
+CSV
+```java
+                    ArrayList<String> rows=new ArrayList<String>();
+                    rows=database.sqlEjectCSV("SELECT * FROM food;");
+                    for (int i=0;i<rows.size();i++)
+                    {
+                        //Do stuffs with each row
+                    }
+```
+JSON
+```java
+                    String json=database.sqlEjectJSON("SELECT * FROM food;");
+```
+XML
+```java
+                    String xml=database.sqlEjectXML("SELECT * FROM food;");
+```
