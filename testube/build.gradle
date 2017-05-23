@@ -36,4 +36,5 @@ dependencies {
     compile 'gun0912.ted:tedpermission:1.0.3'
     compile 'com.github.Aspsine:MultiThreadDownload:dc54cb1def'
     compile 'com.squareup.okhttp3:okhttp:3.8.0'
+    compile 'com.google.code.gson:gson:2.6.2'
 }
