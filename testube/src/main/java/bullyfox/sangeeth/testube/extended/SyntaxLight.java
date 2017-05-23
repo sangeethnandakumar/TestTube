@@ -54,7 +54,6 @@ public class SyntaxLight {
         });
             String encode= URLEncoder.encode(code);
             String inlink="http://markup.su/api/highlighter/?language="+language.toUpperCase()+"&source="+encode+"&theme=Sunburst";
-            Toast.makeText(context, inlink, Toast.LENGTH_SHORT).show();
             server.connectWithGET(inlink);
         }
         catch (Exception e)
