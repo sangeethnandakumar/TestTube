@@ -428,7 +428,6 @@ Messed up with Android database implementations? Here is the perfect pure simple
 0. Look at the syntax
 ```java
 	SuperDatabase database=new SuperDatabase(<CONTEXT>,<DATABASE_NAME>,<DB_SCHEMA>);
-
 ```
 1. Declare the SuperDatabase
 ```java
@@ -436,6 +435,7 @@ Messed up with Android database implementations? Here is the perfect pure simple
 
 ```
 Now fire the queries
+
 a). Create an INJECT statement, If you have a non returning query
 ```java
                     database.sqlInject("INSERT INTO food VALUES('Banana','Vitamin A');");
@@ -450,7 +450,7 @@ b). Create an EJECT statement, If you have a returning query
 ```
 b). EJECT statement can eject data in CSV, JSON & XML formats. CSV needs an ArrayList<Srtings>
 
-CSV
+**CSV**
 ```java
                     ArrayList<String> rows=new ArrayList<String>();
                     rows=database.sqlEjectCSV("SELECT * FROM food;");
@@ -459,11 +459,39 @@ CSV
                         //Do stuffs with each row
                     }
 ```
-JSON
+**JSON**
 ```java
                     String json=database.sqlEjectJSON("SELECT * FROM food;");
 ```
-XML
+**XML**
 ```java
                     String xml=database.sqlEjectXML("SELECT * FROM food;");
+```
+
+## SUPER ASSET DATABASE (managers)
+![Runtime permission demo](https://github.com/sangeethnandakumar/TestTube/blob/master/superlocaldatabase.gif)
+
+Already have a database with you? Here is the simplest solution to make in Android
+0. Look at the syntax
+```java
+	SuperDatabase database=new SuperDatabase(<CONTEXT>,<DATABASE_NAME>,<DB_SCHEMA>,<ASSET_IMPORT_MODE>);
+```
+1 a). If your app runs for the first time after installation, Then import the database from asset. So declare like this
+```java
+	SuperDatabase database=new SuperDatabase(getApplicationContext(),"foods.db", AssetDatabaseMode.COPY_TO_SYSTEM);
+```
+1 b). If your app runs after first time, Never import the asset database again. So declare like this
+```java
+	SuperDatabase database=new SuperDatabase(getApplicationContext(),"foods.db", AssetDatabaseMode.READ_FROM_DEVICE);
+
+```
+**NOTE : Now do the INJECT and EJECT queries as before (Also supports CSV, JSON and XML)**
+
+IMPORTANT NOTE
+```xml
+1. You need a .db database for this
+2. Download DB Browser For SQLite (Recomended Windows) - http://sqlitebrowser.org/
+3. Click on 'New Database'
+4. On save prompt - Include ".db" extension after filename
+5. Done, Now import to assets folder
 ```
