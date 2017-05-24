@@ -307,11 +307,11 @@ NOTE : Details will be arrived at the listners as soon us our server sends it ba
 Thinking for an ultimate simple way to download an file from an URL? With multithreading and simultanious download features, Here comes the new FileDownloader class
 0. Look at the initialisation syntax
 ```java
-	FileDownloader downloader=new FileDownloader(<ANY_CONTEXT>,"<DOWNLOAD_FOLDERNAME>","<DOWNLOAD_FILENAME>");
+	FileDownloader downloader=new FileDownloader(<ANY_CONTEXT>,<URL>);
 ```
 1. Now initialise the object like before
 ```java
-	FileDownloader downloader=new FileDownloader(getApplicationContext(),"/storage/emulated/0/GLOBAL","myfile.pdf");
+        FileDownloader downloader=new FileDownloader(getApplicationContext(),"http://www.example.com/test.pdf")
 ```
 2. Keep track of downloader with these event listners
 ```java
@@ -360,7 +360,7 @@ Thinking for an ultimate simple way to download an file from an URL? With multit
 ```
 3. This is the last step to download. So simple...
 ```java
-	downloader.downloadFile("https://www.ece.jhu.edu/~cooper/courses/214/signalsandsystemsnotes.pdf");
+        downloader.downloadFile("/storage/emulated/0","newfile.pdf");
 ```
 NOTE : The construction and devolopment of this class is in BETA. Unfortunatelly, Pause and Cancel is not working as of now. You can use without any other problems. Pause and Cancel support will be added soon.
 
