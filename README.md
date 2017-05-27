@@ -8,6 +8,10 @@ The TestTube library project for easy Android implimentations
 
 ![TestTube Logo](https://github.com/sangeethnandakumar/TestTube/blob/master/logo.png)
 
+**GIVE ME A STAR FOR MY HOURS OF WORK**
+<!-- Place this tag where you want the button to render. -->
+<a class="github-button" href="https://github.com/sangeethnandakumar/TestTube" data-size="large" aria-label="Star sangeethnandakumar/TestTube on GitHub">Star</a>
+
 # Include the Gradle Dependency
 1. On project level Gradle, add
 ```gradle
@@ -307,11 +311,11 @@ NOTE : Details will be arrived at the listners as soon us our server sends it ba
 Thinking for an ultimate simple way to download an file from an URL? With multithreading and simultanious download features, Here comes the new FileDownloader class
 0. Look at the initialisation syntax
 ```java
-	FileDownloader downloader=new FileDownloader(<ANY_CONTEXT>,"<DOWNLOAD_FOLDERNAME>","<DOWNLOAD_FILENAME>");
+	FileDownloader downloader=new FileDownloader(<ANY_CONTEXT>,<URL>);
 ```
 1. Now initialise the object like before
 ```java
-	FileDownloader downloader=new FileDownloader(getApplicationContext(),"/storage/emulated/0/GLOBAL","myfile.pdf");
+        FileDownloader downloader=new FileDownloader(getApplicationContext(),"http://www.example.com/test.pdf")
 ```
 2. Keep track of downloader with these event listners
 ```java
@@ -360,7 +364,7 @@ Thinking for an ultimate simple way to download an file from an URL? With multit
 ```
 3. This is the last step to download. So simple...
 ```java
-	downloader.downloadFile("https://www.ece.jhu.edu/~cooper/courses/214/signalsandsystemsnotes.pdf");
+        downloader.downloadFile("/storage/emulated/0","newfile.pdf");
 ```
 NOTE : The construction and devolopment of this class is in BETA. Unfortunatelly, Pause and Cancel is not working as of now. You can use without any other problems. Pause and Cancel support will be added soon.
 
@@ -387,8 +391,7 @@ Http GET methord requests a server with inline parameters on its URL. DOn't use 
 2. Now just call the server with GET parameters
 ```java
 		server.connectWithGET("https://www.google.com/test.php?name=Sangeeth&loc=India");
-````
-
+```
 
 ## HTTP POST REQUEST (network)
 ![Http GET Demo](https://github.com/sangeethnandakumar/TestTube/blob/master/HttpPOST.gif)
@@ -420,4 +423,106 @@ Http POST methord requests a server with unvisible parameters. Usefull to transp
 2. Now just call the server with POST rack along caller activity
 ```java
                 server.connectWithPOST(MainActivity.this,"http://sangeethnandakumar.esy.es/PROJECTS/PUBLIC_SERVICE/posttest.php",racks);
-````
+```
+
+## SUPER DATABASE (managers)
+![Runtime permission demo](https://github.com/sangeethnandakumar/TestTube/blob/master/superlocaldatabase.gif)
+
+Messed up with Android database implementations? Here is the perfect pure simple SQL database
+0. Look at the syntax
+```java
+	SuperDatabase database=new SuperDatabase(<CONTEXT>,<DATABASE_NAME>,<DB_SCHEMA>);
+```
+1. Declare the SuperDatabase
+```java
+	SuperDatabase database=new SuperDatabase(getApplicationContext(),"Foods","CREATE TABLE IF NOT EXISTS food('name' VARCHAR(20),'vitamin' VARCHAR(20);");
+
+```
+Now fire the queries
+
+a). Create an INJECT statement, If you have a non returning query
+```java
+                    database.sqlInject("INSERT INTO food VALUES('Banana','Vitamin A');");
+                    database.sqlInject("INSERT INTO food VALUES('Apple','Vitamin B');");
+                    database.sqlInject("INSERT INTO food VALUES('Grapes','Vitamin C');");
+```
+It will simply executes...
+
+b). Create an EJECT statement, If you have a returning query
+```java
+                    <return_var> = database.sqlEjectCSV("SELECT * FROM food;");
+```
+b). EJECT statement can eject data in CSV, JSON & XML formats. CSV needs an ArrayList<Srtings>
+
+**CSV**
+```java
+                    ArrayList<String> rows=new ArrayList<String>();
+                    rows=database.sqlEjectCSV("SELECT * FROM food;");
+                    for (int i=0;i<rows.size();i++)
+                    {
+                        //Do stuffs with each row
+                    }
+```
+**JSON**
+```java
+                    String json=database.sqlEjectJSON("SELECT * FROM food;");
+```
+**XML**
+```java
+                    String xml=database.sqlEjectXML("SELECT * FROM food;");
+```
+
+## SUPER ASSET DATABASE (managers)
+![Runtime permission demo](https://github.com/sangeethnandakumar/TestTube/blob/master/superlocaldatabase.gif)
+
+Already have a database with you? Here is the simplest solution to make in Android
+0. Look at the syntax
+```java
+	SuperDatabase database=new SuperDatabase(<CONTEXT>,<DATABASE_NAME>,<DB_SCHEMA>,<ASSET_IMPORT_MODE>);
+```
+1 a). If your app runs for the first time after installation, Then import the database from asset. So declare like this
+```java
+	SuperDatabase database=new SuperDatabase(getApplicationContext(),"foods.db", AssetDatabaseMode.COPY_TO_SYSTEM);
+```
+1 b). If your app runs after first time, Never import the asset database again. So declare like this
+```java
+	SuperDatabase database=new SuperDatabase(getApplicationContext(),"foods.db", AssetDatabaseMode.READ_FROM_DEVICE);
+
+```
+**NOTE : Now do the INJECT and EJECT queries as before (Also supports CSV, JSON and XML)**
+
+IMPORTANT NOTE
+```xml
+1. You need a .db database for this
+2. Download DB Browser For SQLite (Recomended Windows) - http://sqlitebrowser.org/
+3. Click on 'New Database'
+4. On save prompt - Include ".db" extension after filename
+5. Done, Now import to assets folder
+```
+
+## SYNTAX HIGHLIGHTING (extended)
+![Runtime permission demo](https://github.com/sangeethnandakumar/TestTube/blob/master/SyntaxHighlight.gif)
+
+Online syntax highlighting highlights any language code segment with HTML that you can render on a WebView easly
+1. Create the object
+```java
+	SyntaxLight syntax=new SyntaxLight(getApplicationContext(),"PHP","<?php echo 'Hello world'; ?>");
+```
+2. Implement the listners
+```java
+                    syntax.setOnCodeStatusListner(new SyntaxLight.OnCodeStatusListner() {
+                        @Override
+                        public void parsedToHTML(String s) {
+                            //You got HTML here
+                        }
+
+                        @Override
+                        public void parseError() {
+
+                        }
+                    });
+```
+3. Now highlight the code
+```java
+	syntax.highlightCode();
+```
