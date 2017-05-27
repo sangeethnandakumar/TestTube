@@ -1,5 +1,7 @@
 v2.5.1 |
 
 Removed : Toasting bug
+Beta : Http POST can now send binary file
+Removed : appcompat v7
 
  | com.github.sangeethnandakumar:TestTube:v2.5.1

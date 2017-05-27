@@ -9,12 +9,16 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.loopj.android.http.RequestParams;
+import com.loopj.android.http.SyncHttpClient;
+import com.loopj.android.http.TextHttpResponseHandler;
 
 import java.io.File;
 import java.net.URL;
 import java.util.List;
 
 import bullyfox.sangeeth.testube.component.DataRack;
+import cz.msebera.android.httpclient.Header;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
@@ -91,21 +95,25 @@ public class WebServer
         worker.execute(url);
     }
 
-    public void connectWithPOST(Activity myactivity, String url, File file,String filename)
+    public void connectWithPOST(Activity myactivity, String url, String fileparameter,String filepath)
     {
-        PostWorker worker=new PostWorker(context,myactivity,url,file,filename);
-        worker.setOnPostStatusListner(new PostWorker.OnPostStatusListner() {
+        SyncHttpClient client = new SyncHttpClient();
+        RequestParams params = new RequestParams();
+        try{params.put(fileparameter, new File(filepath));}catch (Exception e){};
+
+        client.post(url, params, new TextHttpResponseHandler() {
             @Override
-            public void onPostSuccess(String responce) {
-                listner.onServerResponded(responce);
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                listner.onServerRevoked();
             }
 
             @Override
-            public void onPostFailed() {
-                listner.onServerRevoked();
+            public void onSuccess(int statusCode, Header[] headers, String responseString) {
+                listner.onServerResponded(responseString);
             }
         });
-        worker.execute(url);
     }
+
+
 
 }
