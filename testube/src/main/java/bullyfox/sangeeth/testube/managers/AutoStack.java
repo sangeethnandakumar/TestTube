@@ -5,17 +5,26 @@ package bullyfox.sangeeth.testube.managers;
  */
 
 public class AutoStack {
+    String delemer="/";
+    String page="";
     String[] values=new String[100];
     int count=0;
 
+    public AutoStack(String delemer) {
+        this.delemer = delemer;
+    }
+
     public void push(String value)
     {
-        values[++count]=value;
+        count++;
+        values[count]=value;
     }
 
     public String pop()
     {
-        return values[count--];
+        String result=values[count];
+        count--;
+        return result;
     }
 
     public boolean isEmpty()
@@ -29,5 +38,21 @@ public class AutoStack {
             return true;
         }
     }
+
+    public String getPage()
+    {
+        page="";
+        for (int i=1;i<=count;i++)
+        {
+            page+=delemer+values[i];
+        }
+        return page;
+    }
+
+    public String getAt(int possition)
+    {
+        return values[possition];
+    }
+
 }
 
