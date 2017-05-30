@@ -44,6 +44,8 @@ v2.0.5 | New : Android runtime permission helper<br>Upgraded : Permit class to s
 v2.1.0 | New : Permanant settings<br>New : Autostack page stack<br>Beta : Google Distance Metrix initial phase (GDM) | com.github.sangeethnandakumar:TestTube:v2.1.0
 v2.5.0 | Upgraded : Google Distance Metrix fully implemented<br>New : Support for Http GET request<br>New : Support for Http POST request<br>Upgraded : POST request to send a DataRack | com.github.sangeethnandakumar:TestTube:v2.5.0
 v2.5.1 | Removed : RW External storage permission<br>New : 'SuperDatabase', a pure local SQL database<br>Upgraded : injectSQL to do non returning SQL queries<br>Upgraded : ejectSQL to do returning SQL queries<br>Upgraded : ArrayString, JSON and XML out from Database<br>Beta : Ability to import 'Asset DB' and use<br>Beta : Importing .db database with existing control<br>New : Syntax highlighter with a number of language support | com.github.sangeethnandakumar:TestTube:v2.5.1
+v2.5.2 | Applied : Minor bug fixes | com.github.sangeethnandakumar:TestTube:v2.5.2
+v2.5.3 | Applied : Major bug fixes | com.github.sangeethnandakumar:TestTube:v2.5.3
 
 Important:
 
