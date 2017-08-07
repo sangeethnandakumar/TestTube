@@ -8,9 +8,8 @@ The TestTube library project for easy Android implimentations
 
 ![TestTube Logo](https://github.com/sangeethnandakumar/TestTube/blob/master/logo.png)
 
-**HIT THAT STAR ONLY AFTER THIS HELPS YOU**
-**FIRE A MAIL DIRECTLY : sangeethnandakumar@gmail.com**
-**OR**
+**HIT THAT STAR ONLY AFTER THIS HELPS YOU | **
+**FIRE A MAIL DIRECTLY : sangeethnandakumar@gmail.com | **
 **DROP A MSG ON WHATSAPP: +91 9495661468**
 
 <!-- Place this tag where you want the button to render. -->
