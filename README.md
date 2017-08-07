@@ -8,7 +8,11 @@ The TestTube library project for easy Android implimentations
 
 ![TestTube Logo](https://github.com/sangeethnandakumar/TestTube/blob/master/logo.png)
 
-**GIVE ME A STAR FOR MY HOURS OF WORK**
+**HIT THAT STAR ONLY AFTER THIS HELPS YOU**
+**FIRE A MAIL DIRECTLY : sangeethnandakumar@gmail.com**
+**OR**
+**DROP A MSG ON WHATSAPP: +91 9495661468**
+
 <!-- Place this tag where you want the button to render. -->
 <a class="github-button" href="https://github.com/sangeethnandakumar/TestTube" data-size="large" aria-label="Star sangeethnandakumar/TestTube on GitHub">Star</a>
 
