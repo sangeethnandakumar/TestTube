@@ -103,7 +103,7 @@ class PostWorker extends AsyncTask<String,Integer,String>
                     myactivity.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(myactivity, e.toString(), Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(myactivity, e.toString(), Toast.LENGTH_SHORT).show();
                             listner.onPostFailed();
                         }
                     });
